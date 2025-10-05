@@ -8,6 +8,7 @@ class NoteFlow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme:ThemeData.dark() ,
       debugShowCheckedModeBanner: false,
       title: 'NoteFlow',
       onGenerateRoute: appRouter.generateRoute,
