@@ -7,7 +7,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:note_flow/helpers/app_router.dart';
+import 'package:note_flow/core/helpers/app_router.dart';
 
 import 'package:note_flow/main.dart';
 
