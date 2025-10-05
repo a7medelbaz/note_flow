@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:note_flow/layers/ui/widgets/my_appbar.dart';
-import 'package:note_flow/layers/ui/widgets/note_card.dart';
+import 'package:note_flow/layers/ui/widgets/note_list_view.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -12,12 +12,13 @@ class HomePage extends StatelessWidget {
         appBarTitle: 'NoteFlow',
         onpressed: () {},
       ),
-      body: NoteCard(
-        title: ' My Flutter Course',
-        subTitle: 'Hi my name is Ahmed ',
-        deleteFunction: () {},
-        time: DateTime.now(),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.blueAccent,
+        shape: const CircleBorder(),
+        child: Icon(Icons.add),
+        onPressed: () {},
       ),
+      body: NoteListView(),
     );
   }
 }
