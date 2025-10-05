@@ -16,6 +16,7 @@ class MyAppbar extends StatelessWidget
       title: Text(
         appBarTitle,
         style: TextStyle(
+          fontFamily: 'Poppins',
           fontSize: 25,
           fontWeight: FontWeight.bold,
         ),
