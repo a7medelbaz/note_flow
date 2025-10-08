@@ -32,6 +32,8 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_launcher_icons: ^0.14.4
+  hive: ^2.2.3
+  hive_flutter: ^1.1.0
   intl: ^0.20.2
 
 dev_dependencies:
@@ -68,7 +70,6 @@ flutter:
         - asset: assets/fonts/Poppins/Poppins-Light.ttf
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
-
 # comment to do: نقل إعدادات الأيقونة إلى خارج قسم flutter (كان السبب في الخطأ)
 # 🔹 App icon configuration
 flutter_launcher_icons:
