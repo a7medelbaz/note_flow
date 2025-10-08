@@ -3,7 +3,7 @@ name: Android Fastlane with Firebase App Distribution Workflow
 on:
   push:
     branches:
-      - main   # غيّرها لـ master لو هو الفرع الأساسي عندك
+      - main
 
 jobs:
   distribute_to_firebase:
@@ -35,8 +35,8 @@ jobs:
       - name: Set up JDK 17
         uses: actions/setup-java@v4
         with:
-          java-version: '17'
-          distribution: 'temurin'
+          java-version: "17"
+          distribution: "temurin"
 
       - name: Install Flutter
         uses: subosito/flutter-action@v2
