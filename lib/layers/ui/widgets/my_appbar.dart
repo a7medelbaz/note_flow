@@ -3,11 +3,10 @@ import 'package:flutter/material.dart';
 class MyAppbar extends StatelessWidget
     implements PreferredSizeWidget {
   final String appBarTitle;
-  final Function onpressed;
+  final Widget appbarIcon;
   const MyAppbar({
     super.key,
-    required this.onpressed,
-    required this.appBarTitle,
+    required this.appBarTitle, required this.appbarIcon,
   });
 
   @override
@@ -23,12 +22,7 @@ class MyAppbar extends StatelessWidget
       ),
       // centerTitle: false,
       actions: [
-        IconButton(
-          icon: const Icon(Icons.search),
-          onPressed: () {
-            onpressed;
-          },
-        ),
+        appbarIcon
       ],
     );
   }

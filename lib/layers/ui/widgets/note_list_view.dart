@@ -7,7 +7,7 @@ class NoteListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      itemCount: 3,
+      itemCount: 10,
       itemBuilder: (context, index) {
         return NoteCard(
           title: ' My Flutter Course',
