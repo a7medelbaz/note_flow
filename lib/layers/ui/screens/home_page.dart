@@ -28,8 +28,11 @@ class HomePage extends StatelessWidget {
 
     return Scaffold(
       appBar: MyAppbar(
+        appbarIcon: IconButton(
+          icon: const Icon(Icons.search),
+          onPressed: () {},
+        ),
         appBarTitle: 'NoteFlow',
-        onpressed: () {},
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.blueAccent,
