@@ -2,7 +2,7 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Golden Store Development",
+            "name": "NotFlow Development",
             "type": "dart",
             "request": "launch",
             "program": "lib/main_development.dart",
@@ -14,7 +14,7 @@
             ]
         },
         {
-            "name": "Golden Store Production",
+            "name": "NotFlow Production",
             "type": "dart",
             "request": "launch",
             "program": "lib/main_production.dart",
