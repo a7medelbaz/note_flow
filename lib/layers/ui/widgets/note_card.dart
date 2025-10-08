@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:note_flow/core/constants/my_strings.dart';
 
 class NoteCard extends StatelessWidget {
   final String title;
@@ -41,27 +42,53 @@ class NoteCard extends StatelessWidget {
                 ),
               ),
               subtitle: Padding(
-                padding: const EdgeInsets.only(top: 14.0),
+                padding: const EdgeInsets.only(
+                  top: 14.0,
+                ),
                 child: Text(
                   subTitle,
                   style: TextStyle(
                     fontFamily: 'Poppins',
-                    color: Colors.black.withValues(
-                      alpha: .5,
-                    ),
+                    color: Colors.black
+                        .withValues(alpha: .5),
                     fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
-              trailing: IconButton(
-                icon: const Icon(
-                  Icons.delete,
-                  color: Colors.redAccent,
-                  size: 30,
+              trailing: IntrinsicHeight(
+                child: SingleChildScrollView(
+                  child: Column(
+                    mainAxisSize:
+                        MainAxisSize.min,
+                    children: [
+                      IconButton(
+                        icon: const Icon(
+                          Icons.delete,
+                          color: Colors.redAccent,
+                          size: 30,
+                        ),
+                        onPressed: () {
+                          deleteFunction;
+                        },
+                      ),
+                      SizedBox(height: 6),
+                      IconButton(
+                        icon: const Icon(
+                          Icons.edit_note,
+                          color: Colors.blue,
+                          size: 24,
+                        ),
+                        onPressed: () {
+                          Navigator.pushNamed(
+                            context,
+                            MyRoutes
+                                .editeNotePageRoute,
+                          );
+                        },
+                      ),
+                    ],
+                  ),
                 ),
-                onPressed: () {
-                  deleteFunction;
-                },
               ),
               minVerticalPadding: 25,
             ),
