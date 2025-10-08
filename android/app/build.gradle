@@ -37,7 +37,31 @@ android {
             signingConfig = signingConfigs.getByName("debug")
         }
     }
+        // Define flavor dimensions
+    flavorDimensions += "default"
+    productFlavors {
+        create("development") {
+            dimension = "default"
+            resValue("string", "app_name", "NotFlow Development")
+        }
+        create("production") {
+            dimension = "default"
+            resValue("string", "app_name", "NotFlow Production")
+        }
+    }
+
+    buildTypes {
+        // Debug build type
+        getByName("debug") {
+            // Debug is usually not signed or uses debug keys by default
+        }
+        // Release build type
+        getByName("release") {
+            signingConfig = signingConfigs.getByName("debug")
+        }
+    }
 }
+
 
 flutter {
     source = "../.."
