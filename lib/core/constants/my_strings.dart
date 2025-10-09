@@ -6,3 +6,6 @@ class MyRoutes {
 class MyFonts {
   static const myMainFont = 'Poppins';
 }
+class MyConstants {
+  static const myNoteHiveBox = 'NoteBox';
+}
