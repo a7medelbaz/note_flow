@@ -6,8 +6,7 @@ import '../widgets/my_appbar.dart';
 import '../widgets/note_list_view.dart';
 
 class HomePage extends StatelessWidget {
-
-  const HomePage({super.key, });
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,19 +16,26 @@ class HomePage extends StatelessWidget {
       return showModalBottomSheet(
         context: context,
         isScrollControlled: false,
-        backgroundColor: Colors.blueGrey,
+        // useSafeArea: true,
+        backgroundColor: Colors.black87,
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(
             top: Radius.circular(25),
           ),
         ),
         builder: (context) {
-          return const AddNote();
+          return BlocProvider(
+            create: (context) => AddNoteCubit(),
+            child: const AddNote(),
+          );
         },
       );
     }
 
-    return BlocBuilder<AddNoteCubit, AddNoteState>(
+    return BlocBuilder<
+      AddNoteCubit,
+      AddNoteState
+    >(
       builder: (context, state) {
         return Scaffold(
           appBar: MyAppbar(
