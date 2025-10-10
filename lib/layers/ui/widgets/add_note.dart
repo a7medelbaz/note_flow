@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
-import 'package:note_flow/layers/domain/logic/cubit/read_note_cubit/add_note_cubit.dart';
+import 'package:note_flow/layers/domain/logic/cubit/add_note_cubit/add_note_cubit.dart';
 import 'package:note_flow/layers/ui/widgets/widgets_of_modal_bottom_sheet.dart';
 import 'add_note_form.dart';
 
