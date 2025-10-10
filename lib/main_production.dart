@@ -1,5 +1,7 @@
+import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';
+import 'package:note_flow/layers/domain/logic/cubit/my_cubit_observer.dart';
 
 import 'core/constants/my_strings.dart';
 import 'core/helpers/app_router.dart';
@@ -26,6 +28,7 @@ class NoteFlow extends StatelessWidget {
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  Bloc.observer = MyBlocObserver();
   // Initialize Hive
   await Hive.initFlutter();
   Hive.registerAdapter(NoteModelAdapter());
