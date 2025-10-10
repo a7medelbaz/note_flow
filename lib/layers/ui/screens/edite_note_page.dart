@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:note_flow/layers/data/model/note_model.dart';
 
 import '../widgets/my_appbar.dart';
 import '../widgets/widgets_of_modal_bottom_sheet.dart';
 
 class EditeNotePage extends StatelessWidget {
-  const EditeNotePage({super.key});
+  final NoteModel selectedNote;
+  const EditeNotePage({super.key, required this.selectedNote});
 
   @override
   Widget build(BuildContext context) {

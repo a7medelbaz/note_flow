@@ -16,8 +16,9 @@ class NoteListView extends StatelessWidget {
             child: CircularProgressIndicator(),
           );
         } else if (state is NotesSuccesss) {
-          return Expanded(
+          return SingleChildScrollView(
             child: ListView.builder(
+              shrinkWrap: true,
               itemCount:
                   state.loadingNotes.length,
               itemBuilder: (context, index) {
@@ -34,6 +35,8 @@ class NoteListView extends StatelessWidget {
                   time: state
                       .loadingNotes[index]
                       .dateTime,
+                  selectedNote:
+                      state.loadingNotes[index],
                 );
               },
             ),

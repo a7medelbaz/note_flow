@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
+import 'package:note_flow/layers/data/model/note_model.dart';
 import 'package:note_flow/layers/domain/logic/cubit/read_note_cubit/notes_cubit.dart';
 
 import '../../../core/constants/my_strings.dart';
 
 class NoteCard extends StatelessWidget {
+  final NoteModel selectedNote;
   final String id;
   final String title;
   final String subTitle;
@@ -15,7 +17,7 @@ class NoteCard extends StatelessWidget {
     required this.title,
     required this.subTitle,
     required this.time,
-    required this.id,
+    required this.id, required this.selectedNote,
   });
 
   @override
@@ -92,6 +94,7 @@ class NoteCard extends StatelessWidget {
                           context,
                           MyRoutes
                               .editeNotePageRoute,
+                          arguments: selectedNote,
                         );
                       },
                     ),
