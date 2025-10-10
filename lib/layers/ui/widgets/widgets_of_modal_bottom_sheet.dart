@@ -5,6 +5,7 @@ class WidgetsOfModalBottomSheet {
     required String hintText,
     required String title,
     required TextEditingController controller,
+    required Color textColor,
     int maxLines = 1,
     BuildContext? context,
   }) {
@@ -27,7 +28,7 @@ class WidgetsOfModalBottomSheet {
                 .always, // 👈 Always at top-left
         labelStyle: TextStyle(
           color: Colors.white.withValues(
-            alpha: .4,
+            alpha: .8,
           ),
         ),
         hintText: hintText,
