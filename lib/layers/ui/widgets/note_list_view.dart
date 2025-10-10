@@ -16,22 +16,27 @@ class NoteListView extends StatelessWidget {
             child: CircularProgressIndicator(),
           );
         } else if (state is NotesSuccesss) {
-          return ListView.builder(
-            itemCount: state.loadingNotes.length,
-            itemBuilder: (context, index) {
-              return NoteCard(
-                title: state
-                    .loadingNotes[index]
-                    .title,
-                subTitle: state
-                    .loadingNotes[index]
-                    .subTitle,
-                deleteFunction: () {},
-                time: state
-                    .loadingNotes[index]
-                    .dateTime,
-              );
-            },
+          return Expanded(
+            child: ListView.builder(
+              itemCount:
+                  state.loadingNotes.length,
+              itemBuilder: (context, index) {
+                return NoteCard(
+                  id: state
+                      .loadingNotes[index]
+                      .id,
+                  title: state
+                      .loadingNotes[index]
+                      .title,
+                  subTitle: state
+                      .loadingNotes[index]
+                      .subTitle,
+                  time: state
+                      .loadingNotes[index]
+                      .dateTime,
+                );
+              },
+            ),
           );
         } else if (state is NotesFailure) {
           return Center(
