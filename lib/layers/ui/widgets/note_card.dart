@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:note_flow/core/constants/my_strings.dart';
+
+import '../../../core/constants/my_strings.dart';
 
 class NoteCard extends StatelessWidget {
   final String title;

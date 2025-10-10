@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:note_flow/layers/domain/logic/cubit/add_note_cubit.dart';
-import 'package:note_flow/layers/ui/widgets/add_note.dart';
-import 'package:note_flow/layers/ui/widgets/my_appbar.dart';
-import 'package:note_flow/layers/ui/widgets/note_list_view.dart';
+import '../../domain/logic/cubit/add_note_cubit.dart';
+import '../widgets/add_note.dart';
+import '../widgets/my_appbar.dart';
+import '../widgets/note_list_view.dart';
 
 class HomePage extends StatelessWidget {
 

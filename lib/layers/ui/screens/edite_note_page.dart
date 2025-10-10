@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:note_flow/layers/ui/widgets/my_appbar.dart';
-import 'package:note_flow/layers/ui/widgets/widgets_of_modal_bottom_sheet.dart';
+
+import '../widgets/my_appbar.dart';
+import '../widgets/widgets_of_modal_bottom_sheet.dart';
 
 class EditeNotePage extends StatelessWidget {
   const EditeNotePage({super.key});
