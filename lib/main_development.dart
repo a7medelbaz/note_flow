@@ -1,11 +1,11 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';
-import 'package:note_flow/layers/domain/logic/cubit/my_cubit_observer.dart';
 
 import 'core/constants/my_strings.dart';
 import 'core/helpers/app_router.dart';
 import 'layers/data/model/note_model.dart';
+import 'layers/domain/logic/cubit/my_cubit_observer.dart';
 import 'layers/ui/widgets/my_general_widgets.dart';
 
 class NoteFlow extends StatelessWidget {
