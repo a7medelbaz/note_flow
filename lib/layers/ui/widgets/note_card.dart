@@ -1,19 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
+import 'package:note_flow/layers/domain/logic/cubit/read_note_cubit/notes_cubit.dart';
 
 import '../../../core/constants/my_strings.dart';
 
 class NoteCard extends StatelessWidget {
+  final String id;
   final String title;
   final String subTitle;
-  final Function deleteFunction;
   final DateTime time;
   const NoteCard({
     super.key,
     required this.title,
     required this.subTitle,
-    required this.deleteFunction,
     required this.time,
+    required this.id,
   });
 
   @override
@@ -21,6 +23,13 @@ class NoteCard extends StatelessWidget {
     final formattedTime = DateFormat(
       'MMM d, yyyy – h:mm a',
     ).format(time);
+    // delete Note
+    deleteNote(String id) {
+      BlocProvider.of<NotesCubit>(
+        context,
+      ).deleteNote(id);
+    }
+
     return Padding(
       padding: const EdgeInsets.all(12.0),
       child: Container(
@@ -69,7 +78,7 @@ class NoteCard extends StatelessWidget {
                         size: 30,
                       ),
                       onPressed: () =>
-                          deleteFunction(),
+                          deleteNote(id),
                     ),
                     const SizedBox(height: 6),
                     IconButton(
