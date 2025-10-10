@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:note_flow/layers/ui/widgets/add_note_form.dart';
+import 'add_note_form.dart';
 
 class AddNote extends StatelessWidget {
 
