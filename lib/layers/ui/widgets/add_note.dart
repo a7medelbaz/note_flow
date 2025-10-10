@@ -42,12 +42,25 @@ class AddNote extends StatelessWidget {
         }
       },
       builder: (context, state) {
-        return SingleChildScrollView(
-          child: ModalProgressHUD(
-            inAsyncCall: state is AddNoteLoading
-                ? true
-                : false,
-            child: AddNoteForm(),
+        return SafeArea(
+          top: true,
+          child: Padding(
+            padding:  EdgeInsets.only(
+              right: 8.0,
+              left: 8.0,
+              bottom: MediaQuery.of(
+                context,
+              ).viewInsets.bottom,
+            ),
+            child: SingleChildScrollView(
+              child: ModalProgressHUD(
+                inAsyncCall:
+                    state is AddNoteLoading
+                    ? true
+                    : false,
+                child: AddNoteForm(),
+              ),
+            ),
           ),
         );
       },

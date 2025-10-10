@@ -36,7 +36,7 @@ class _AddNoteFormState
         children: [
           SizedBox(height: 30),
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: EdgeInsets.all(8.0),
             child: WidgetsOfModalBottomSheet()
                 .buildTextField(
                   title: 'Title',
