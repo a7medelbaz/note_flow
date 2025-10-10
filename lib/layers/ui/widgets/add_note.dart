@@ -42,14 +42,12 @@ class AddNote extends StatelessWidget {
         }
       },
       builder: (context, state) {
-        return Scaffold(
-          body: SingleChildScrollView(
-            child: ModalProgressHUD(
-              inAsyncCall: state is AddNoteLoading
-                  ? true
-                  : false,
-              child: AddNoteForm(),
-            ),
+        return SingleChildScrollView(
+          child: ModalProgressHUD(
+            inAsyncCall: state is AddNoteLoading
+                ? true
+                : false,
+            child: AddNoteForm(),
           ),
         );
       },

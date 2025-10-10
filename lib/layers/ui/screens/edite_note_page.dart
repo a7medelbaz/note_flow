@@ -49,6 +49,7 @@ class EditeNotePage extends StatelessWidget {
                     context: context,
                     hintText: 'Write the Title',
                     controller: titleController,
+                    textColor: Colors.white,
                   ),
             ),
             SizedBox(height: 50),
@@ -62,6 +63,7 @@ class EditeNotePage extends StatelessWidget {
                     hintText:
                         'Write the Content of the Note',
                     controller: contentController,
+                    textColor: Colors.white,
                   ),
             ),
             SizedBox(height: 30),

@@ -43,6 +43,7 @@ class _AddNoteFormState
                   context: context,
                   hintText: 'Write the Title',
                   controller: titleController,
+                  textColor: Colors.white,
                 ),
           ),
           SizedBox(height: 50),
@@ -56,6 +57,7 @@ class _AddNoteFormState
                   hintText:
                       'Write the Content of the Note',
                   controller: contentController,
+                  textColor: Colors.white,
                 ),
           ),
           SizedBox(height: 30),
