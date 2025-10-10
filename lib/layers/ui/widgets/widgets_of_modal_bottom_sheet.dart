@@ -83,6 +83,7 @@ class WidgetsOfModalBottomSheet {
   void showCustomSnackBar(
     BuildContext context,
     String message,
+    Color color,
   ) {
     final overlay = Overlay.of(context);
     final overlayEntry = OverlayEntry(
@@ -100,7 +101,7 @@ class WidgetsOfModalBottomSheet {
               vertical: 12,
             ),
             decoration: BoxDecoration(
-              color: Colors.blueAccent,
+              color: color,
               borderRadius: BorderRadius.circular(
                 16,
               ),
