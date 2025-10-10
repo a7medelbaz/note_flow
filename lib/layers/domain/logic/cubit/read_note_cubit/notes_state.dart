@@ -8,3 +8,14 @@ sealed class NotesState extends Equatable {
 }
 
 final class NotesInitial extends NotesState {}
+
+final class NotesLoading extends NotesState {}
+
+final class NotesSuccesss extends NotesState {
+  final List<NoteModel> loadingNotes;
+  const NotesSuccesss({
+    required this.loadingNotes,
+  });
+}
+
+final class Notesfailure extends NotesState {}
