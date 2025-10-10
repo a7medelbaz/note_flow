@@ -20,7 +20,7 @@ class NoteFlow extends StatelessWidget {
     return MaterialApp(
       theme: MyGeneralWidgets().buildDarkTheme(),
       debugShowCheckedModeBanner: false,
-      title: 'NoteFlow',
+      title: 'NotFlow',
       onGenerateRoute: appRouter.generateRoute,
     );
   }
@@ -32,6 +32,6 @@ void main() async {
   Bloc.observer = MyBlocObserver();
   await Hive.initFlutter();
   Hive.registerAdapter(NoteModelAdapter());
-  await Hive.openBox(MyConstants.myNoteHiveBox);
+  await Hive.openBox<NoteModel>(MyConstants.myNoteHiveBox);
   runApp(NoteFlow(appRouter: AppRouter()));
 }
