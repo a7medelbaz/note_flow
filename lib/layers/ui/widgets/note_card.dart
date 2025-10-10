@@ -21,7 +21,6 @@ class NoteCard extends StatelessWidget {
     final formattedTime = DateFormat(
       'MMM d, yyyy – h:mm a',
     ).format(time);
-
     return Padding(
       padding: const EdgeInsets.all(12.0),
       child: Container(
@@ -57,38 +56,37 @@ class NoteCard extends StatelessWidget {
                 ),
               ),
               trailing: IntrinsicHeight(
-                child: SingleChildScrollView(
-                  child: Column(
-                    mainAxisSize:
-                        MainAxisSize.min,
-                    children: [
-                      IconButton(
-                        icon: const Icon(
-                          Icons.delete,
-                          color: Colors.redAccent,
-                          size: 30,
-                        ),
-                        onPressed: () {
-                          deleteFunction;
-                        },
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment:
+                      MainAxisAlignment
+                          .spaceBetween,
+                  children: [
+                    IconButton(
+                      icon: const Icon(
+                        Icons.delete,
+                        color: Colors.redAccent,
+                        size: 30,
                       ),
-                      SizedBox(height: 6),
-                      IconButton(
-                        icon: const Icon(
-                          Icons.edit_note,
-                          color: Colors.blue,
-                          size: 24,
-                        ),
-                        onPressed: () {
-                          Navigator.pushNamed(
-                            context,
-                            MyRoutes
-                                .editeNotePageRoute,
-                          );
-                        },
+                      onPressed: () =>
+                          deleteFunction(),
+                    ),
+                    const SizedBox(height: 6),
+                    IconButton(
+                      icon: const Icon(
+                        Icons.edit_note,
+                        color: Colors.blue,
+                        size: 24,
                       ),
-                    ],
-                  ),
+                      onPressed: () {
+                        Navigator.pushNamed(
+                          context,
+                          MyRoutes
+                              .editeNotePageRoute,
+                        );
+                      },
+                    ),
+                  ],
                 ),
               ),
               minVerticalPadding: 25,
