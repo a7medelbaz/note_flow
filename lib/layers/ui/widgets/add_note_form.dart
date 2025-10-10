@@ -63,19 +63,20 @@ class _AddNoteFormState
               .buildElevatedButton(
                 text: 'Add Note',
                 onPressed: () {
+                  // addNote Variable
+                  var addNote = NoteModel(
+                    id: id,
+                    title: titleController.text,
+                    subTitle:
+                        contentController.text,
+                    dateTime: DateTime.now(),
+                    color: Colors.amberAccent
+                        .toARGB32(),
+                  );
+                  // trigger bloc
                   BlocProvider.of<AddNoteCubit>(
                     context,
-                  ).addNote(
-                    NoteModel(
-                      id: id,
-                      title: titleController.text,
-                      subTitle:
-                          contentController.text,
-                      dateTime: DateTime.now(),
-                      color: Colors.amberAccent
-                          .toARGB32(),
-                    ),
-                  );
+                  ).addNote(addNote);
                   if (formKey.currentState!
                       .validate()) {
                     formKey.currentState!.save();
