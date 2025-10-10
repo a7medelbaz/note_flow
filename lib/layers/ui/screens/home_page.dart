@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../domain/logic/cubit/read_note_cubit/notes_cubit.dart';
 
 import '../../domain/logic/cubit/add_note_cubit/add_note_cubit.dart';
 import '../widgets/add_note.dart';
@@ -24,12 +25,26 @@ class HomePage extends StatelessWidget {
             top: Radius.circular(25),
           ),
         ),
-        builder: (context) {
-          return BlocProvider(
-            create: (context) => AddNoteCubit(),
-            child: const AddNote(),
-          );
-        },
+        builder:
+            (BuildContext bottomSheetContext) {
+              return MultiBlocProvider(
+                providers: [
+                  BlocProvider.value(
+                    value:
+                        BlocProvider.of<
+                          AddNoteCubit
+                        >(context),
+                  ),
+                  BlocProvider.value(
+                    value:
+                        BlocProvider.of<
+                          NotesCubit
+                        >(context),
+                  ),
+                ],
+                child: const AddNote(),
+              );
+            },
       );
     }
 
