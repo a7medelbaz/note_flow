@@ -2,8 +2,9 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:hive_flutter/adapters.dart';
-import '../../../../core/constants/my_strings.dart';
-import '../../../data/model/note_model.dart';
+
+import '../../../../../core/constants/my_strings.dart';
+import '../../../../data/model/note_model.dart';
 
 part 'add_note_state.dart';
 
@@ -23,7 +24,7 @@ class AddNoteCubit extends Cubit<AddNoteState> {
         return; // نوقف التنفيذ هنا
       }
       emit(AddNoteLoading());
-      var notesBox = Hive.box(
+      var notesBox = Hive.box<NoteModel>(
         MyConstants.myNoteHiveBox,
       );
       await notesBox.add(noteModel);
