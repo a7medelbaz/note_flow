@@ -7,6 +7,10 @@ sealed class AddNoteState extends Equatable {
 }
 
 final class AddNoteInitial extends AddNoteState {}
+final class AddEmptyNote extends AddNoteState {
+    final String emptyMassagewarning;
+  AddEmptyNote({required this.emptyMassagewarning});
+}
 
 final class AddNoteLoading extends AddNoteState {}
 

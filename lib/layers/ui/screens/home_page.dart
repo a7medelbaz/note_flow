@@ -15,7 +15,7 @@ class HomePage extends StatelessWidget {
     ) {
       return showModalBottomSheet(
         context: context,
-        isScrollControlled: false,
+        isScrollControlled: true,
         // useSafeArea: true,
         backgroundColor: Colors.black87,
         shape: const RoundedRectangleBorder(

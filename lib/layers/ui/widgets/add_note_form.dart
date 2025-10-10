@@ -36,13 +36,14 @@ class _AddNoteFormState
         children: [
           SizedBox(height: 30),
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: EdgeInsets.all(8.0),
             child: WidgetsOfModalBottomSheet()
                 .buildTextField(
                   title: 'Title',
                   context: context,
                   hintText: 'Write the Title',
                   controller: titleController,
+                  textColor: Colors.white,
                 ),
           ),
           SizedBox(height: 50),
@@ -56,6 +57,7 @@ class _AddNoteFormState
                   hintText:
                       'Write the Content of the Note',
                   controller: contentController,
+                  textColor: Colors.white,
                 ),
           ),
           SizedBox(height: 30),
@@ -63,19 +65,20 @@ class _AddNoteFormState
               .buildElevatedButton(
                 text: 'Add Note',
                 onPressed: () {
+                  // addNote Variable
+                  var addNote = NoteModel(
+                    id: id,
+                    title: titleController.text,
+                    subTitle:
+                        contentController.text,
+                    dateTime: DateTime.now(),
+                    color: Colors.amberAccent
+                        .toARGB32(),
+                  );
+                  // trigger bloc
                   BlocProvider.of<AddNoteCubit>(
                     context,
-                  ).addNote(
-                    NoteModel(
-                      id: id,
-                      title: titleController.text,
-                      subTitle:
-                          contentController.text,
-                      dateTime: DateTime.now(),
-                      color: Colors.amberAccent
-                          .toARGB32(),
-                    ),
-                  );
+                  ).addNote(addNote);
                   if (formKey.currentState!
                       .validate()) {
                     formKey.currentState!.save();
