@@ -28,7 +28,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   // Initialize Hive
   await Hive.initFlutter();
-  await Hive.openBox(MyConstants.myNoteHiveBox);
   Hive.registerAdapter(NoteModelAdapter());
+  await Hive.openBox(MyConstants.myNoteHiveBox);
   runApp(NoteFlow(appRouter: AppRouter()));
 }
