@@ -18,4 +18,9 @@ final class NotesSuccesss extends NotesState {
   });
 }
 
-final class Notesfailure extends NotesState {}
+final class NotesFailure extends NotesState {
+  final String errorMassage;
+  const NotesFailure({
+    required this.errorMassage,
+  });
+}
