@@ -12,6 +12,16 @@ class AddNoteCubit extends Cubit<AddNoteState> {
 
   addNote(NoteModel noteModel) async {
     try {
+      if (noteModel.title.trim().isEmpty ||
+          noteModel.subTitle.trim().isEmpty) {
+        emit(
+          AddEmptyNote(
+            emptyMassagewarning:
+                'Title and content cannot be empty.',
+          ),
+        );
+        return; // نوقف التنفيذ هنا
+      }
       emit(AddNoteLoading());
       var notesBox = Hive.box(
         MyConstants.myNoteHiveBox,
@@ -19,7 +29,11 @@ class AddNoteCubit extends Cubit<AddNoteState> {
       await notesBox.add(noteModel);
       emit(AddNoteSuccesss());
     } on Exception catch (e) {
-      emit(AddNotefailure(errorMassage: e.toString()));
+      emit(
+        AddNotefailure(
+          errorMassage: e.toString(),
+        ),
+      );
     }
   }
 }

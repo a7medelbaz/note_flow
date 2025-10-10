@@ -23,6 +23,14 @@ class AddNote extends StatelessWidget {
                 Colors.red,
               );
         }
+        if (state is AddEmptyNote) {
+          WidgetsOfModalBottomSheet()
+              .showCustomSnackBar(
+                context,
+                state.emptyMassagewarning,
+                Colors.red,
+              );
+        }
         if (state is AddNoteSuccesss) {
           WidgetsOfModalBottomSheet()
               .showCustomSnackBar(
