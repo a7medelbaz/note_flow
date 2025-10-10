@@ -27,8 +27,8 @@ class _AddNoteFormState
       AutovalidateMode.disabled;
   @override
   Widget build(BuildContext context) {
-    final String id = Uuid().v4(); // generates a random unique ID
-
+    final String id = Uuid()
+        .v4(); // generates a random unique ID
     return Form(
       key: formKey,
       autovalidateMode: autovalidateMode,
@@ -69,9 +69,11 @@ class _AddNoteFormState
                     NoteModel(
                       id: id,
                       title: titleController.text,
-                      subTitle: contentController.text,
+                      subTitle:
+                          contentController.text,
                       dateTime: DateTime.now(),
-                      color: Colors.amberAccent,
+                      color: Colors.amberAccent
+                          .toARGB32(),
                     ),
                   );
                   if (formKey.currentState!
@@ -81,6 +83,7 @@ class _AddNoteFormState
                         .showCustomSnackBar(
                           context,
                           'Note is valid!',
+                          Colors.blueAccent,
                         );
                   } else {
                     autovalidateMode =
@@ -89,6 +92,7 @@ class _AddNoteFormState
                   }
                 },
               ),
+          SizedBox(height: 30),
         ],
       ),
     );
