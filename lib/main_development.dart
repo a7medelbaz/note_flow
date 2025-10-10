@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:note_flow/core/constants/my_strings.dart';
 import 'package:note_flow/core/helpers/app_router.dart';
+import 'package:note_flow/layers/data/model/note_model.dart';
 import 'package:note_flow/layers/ui/widgets/my_general_widgets.dart';
 
 class NoteFlow extends StatelessWidget {
@@ -27,6 +28,6 @@ void main() async {
   // Initialize Hive
   await Hive.initFlutter();
   await Hive.openBox(MyConstants.myNoteHiveBox);
-  // Hive.registerAdapter(NoteModelAdapter());
+  Hive.registerAdapter(NoteModelAdapter());
   runApp(NoteFlow(appRouter: AppRouter()));
 }
