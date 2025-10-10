@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
-import 'package:note_flow/layers/domain/logic/cubit/add_note_cubit.dart';
-import 'package:note_flow/layers/ui/widgets/widgets_of_modal_bottom_sheet.dart';
+import '../../domain/logic/cubit/read_note_cubit/notes_cubit.dart';
+import '../../domain/logic/cubit/add_note_cubit/add_note_cubit.dart';
+import 'widgets_of_modal_bottom_sheet.dart';
 import 'add_note_form.dart';
 
 class AddNote extends StatelessWidget {
@@ -38,6 +39,9 @@ class AddNote extends StatelessWidget {
                 'Note added successfully!',
                 Colors.green,
               );
+          context
+              .read<NotesCubit>()
+              .fetchAllNotes();
           Navigator.pop(context);
         }
       },
@@ -45,7 +49,7 @@ class AddNote extends StatelessWidget {
         return SafeArea(
           top: true,
           child: Padding(
-            padding:  EdgeInsets.only(
+            padding: EdgeInsets.only(
               right: 8.0,
               left: 8.0,
               bottom: MediaQuery.of(
