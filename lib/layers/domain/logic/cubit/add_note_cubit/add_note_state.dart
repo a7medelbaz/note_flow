@@ -1,4 +1,4 @@
-part of 'add_note_cubit.dart';
+part of '../read_note_cubit/add_note_cubit.dart';
 
 @immutable
 sealed class AddNoteState extends Equatable {
