@@ -31,7 +31,21 @@ class AppRouter {
         final selectedNote =
             settings.arguments as NoteModel;
         return MaterialPageRoute(
-          builder: (_) => EditeNotePage(selectedNote:selectedNote),
+          builder: (_) => MultiBlocProvider(
+            providers: [
+              BlocProvider(
+                create: (context) =>
+                    NotesCubit()..fetchAllNotes(),
+              ),
+              BlocProvider(
+                create: (context) =>
+                    AddNoteCubit(),
+              ),
+            ],
+            child: EditeNotePage(
+              selectedNote: selectedNote,
+            ),
+          ),
         );
       default:
     }
