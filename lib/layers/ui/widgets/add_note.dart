@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
-import '../../domain/logic/cubit/read_note_cubit/notes_cubit.dart';
+
 import '../../domain/logic/cubit/add_note_cubit/add_note_cubit.dart';
-import 'widgets_of_modal_bottom_sheet.dart';
+import '../../domain/logic/cubit/read_note_cubit/notes_cubit.dart';
 import 'add_note_form.dart';
+import 'widgets_of_modal_bottom_sheet.dart';
 
 class AddNote extends StatelessWidget {
   const AddNote({super.key});
