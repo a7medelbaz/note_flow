@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:note_flow/layers/data/model/note_model.dart';
-import 'package:note_flow/layers/domain/logic/cubit/read_note_cubit/notes_cubit.dart';
+import '../../data/model/note_model.dart';
+import '../../domain/logic/cubit/read_note_cubit/notes_cubit.dart';
 import '../widgets/my_appbar.dart';
 import '../widgets/widgets_of_modal_bottom_sheet.dart';
 
@@ -15,10 +15,13 @@ class EditeNotePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final TextEditingController titleController =
-        TextEditingController();
-    final TextEditingController
-    contentController = TextEditingController();
+    final titleController = TextEditingController(
+      text: selectedNote.title,
+    );
+    final contentController =
+        TextEditingController(
+          text: selectedNote.subTitle,
+        );
     return Scaffold(
       appBar: MyAppbar(
         appbarIcon: Padding(
@@ -108,6 +111,7 @@ class EditeNotePage extends StatelessWidget {
                               selectedNote.color,
                         ),
                       );
+                      Navigator.pop(context);
                     },
                   ),
             ),
