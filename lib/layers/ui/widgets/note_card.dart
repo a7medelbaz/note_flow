@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
-import 'package:note_flow/layers/data/model/note_model.dart';
-import 'package:note_flow/layers/domain/logic/cubit/read_note_cubit/notes_cubit.dart';
+import 'package:note_flow/layers/domain/logic/cubit/add_note_cubit/add_note_cubit.dart';
+import 'package:note_flow/layers/ui/screens/edite_note_page.dart';
+import '../../data/model/note_model.dart';
+import '../../domain/logic/cubit/read_note_cubit/notes_cubit.dart';
 
-import '../../../core/constants/my_strings.dart';
+// import '../../../core/constants/my_strings.dart';
 
 class NoteCard extends StatelessWidget {
   final NoteModel selectedNote;
@@ -40,9 +42,8 @@ class NoteCard extends StatelessWidget {
             padding: const EdgeInsets.all(12.0),
             child: Container(
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(
-                  15,
-                ),
+                borderRadius:
+                    BorderRadius.circular(15),
                 color: Colors.amber,
               ),
               child: Column(
@@ -55,7 +56,8 @@ class NoteCard extends StatelessWidget {
                         fontFamily: 'Poppins',
                         color: Colors.black,
                         fontSize: 30,
-                        fontWeight: FontWeight.bold,
+                        fontWeight:
+                            FontWeight.bold,
                       ),
                     ),
                     subtitle: Padding(
@@ -87,14 +89,16 @@ class NoteCard extends StatelessWidget {
                           IconButton(
                             icon: const Icon(
                               Icons.delete,
-                              color:
-                                  Colors.redAccent,
+                              color: Colors
+                                  .redAccent,
                               size: 30,
                             ),
                             onPressed: () =>
                                 deleteNote(id),
                           ),
-                          const SizedBox(height: 6),
+                          const SizedBox(
+                            height: 6,
+                          ),
                           IconButton(
                             icon: const Icon(
                               Icons.edit_note,
@@ -102,12 +106,34 @@ class NoteCard extends StatelessWidget {
                               size: 24,
                             ),
                             onPressed: () {
-                              Navigator.pushNamed(
+                              Navigator.push(
                                 context,
-                                MyRoutes
-                                    .editeNotePageRoute,
-                                arguments:
-                                    selectedNote,
+                                MaterialPageRoute(
+                                  builder: (_) => MultiBlocProvider(
+                                    providers: [
+                                      BlocProvider.value(
+                                        value:
+                                            BlocProvider.of<
+                                              NotesCubit
+                                            >(
+                                              context,
+                                            ),
+                                      ),
+                                      BlocProvider.value(
+                                        value:
+                                            BlocProvider.of<
+                                              AddNoteCubit
+                                            >(
+                                              context,
+                                            ),
+                                      ),
+                                    ],
+                                    child: EditeNotePage(
+                                      selectedNote:
+                                          selectedNote,
+                                    ),
+                                  ),
+                                ),
                               );
                             },
                           ),
@@ -117,12 +143,13 @@ class NoteCard extends StatelessWidget {
                     minVerticalPadding: 25,
                   ),
                   Align(
-                    alignment:
-                        AlignmentGeometry.topRight,
+                    alignment: AlignmentGeometry
+                        .topRight,
                     child: Padding(
-                      padding: const EdgeInsets.all(
-                        8.0,
-                      ),
+                      padding:
+                          const EdgeInsets.all(
+                            8.0,
+                          ),
                       child: Text(
                         formattedTime,
                         style: Theme.of(context)
