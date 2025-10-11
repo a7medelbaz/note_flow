@@ -57,22 +57,38 @@ class NotesCubit extends Cubit<NotesState> {
     }
   }
 
-Future<void> updateNote(NoteModel updatedNote) async {
-  try {
-    final notesBox = Hive.box<NoteModel>(MyConstants.myNoteHiveBox);
+  Future<void> updateNote(
+    NoteModel updatedNote,
+  ) async {
+    try {
+      final notesBox = Hive.box<NoteModel>(
+        MyConstants.myNoteHiveBox,
+      );
 
-    // Find the key of the note to update
-    final keyToUpdate = notesBox.keys.firstWhere(
-      (key) => (notesBox.get(key) as NoteModel).id == updatedNote.id,
-    );
-
-    // Update the note
-    await notesBox.put(keyToUpdate, updatedNote);
-
-    // Refresh the notes list
-    await fetchAllNotes();
-  } catch (e) {
-    emit(NotesFailure(errorMassage: e.toString()));
+      // Find the key of the note to update
+      final keyToUpdate = notesBox.keys
+          .firstWhere(
+            (key) =>
+                (notesBox.get(key) as NoteModel)
+                    .id ==
+                updatedNote.id,
+          );
+      // Update the note
+      await notesBox.put(
+        keyToUpdate,
+        updatedNote,
+      );
+      List<NoteModel> notesList = notesBox.values
+          .toList();
+      emit(
+        NotesSuccesss(loadingNotes: notesList),
+      );
+      // Refresh the notes list
+      await fetchAllNotes();
+    } catch (e) {
+      emit(
+        NotesFailure(errorMassage: e.toString()),
+      );
+    }
   }
-}
 }
