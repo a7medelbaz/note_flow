@@ -17,7 +17,8 @@ class NoteCard extends StatelessWidget {
     required this.title,
     required this.subTitle,
     required this.time,
-    required this.id, required this.selectedNote,
+    required this.id,
+    required this.selectedNote,
   });
 
   @override
@@ -32,101 +33,116 @@ class NoteCard extends StatelessWidget {
       ).deleteNote(id);
     }
 
-    return Padding(
-      padding: const EdgeInsets.all(12.0),
-      child: Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(15),
-          color: Colors.amber,
-        ),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            ListTile(
-              title: Text(
-                title,
-                style: TextStyle(
-                  fontFamily: 'Poppins',
-                  color: Colors.black,
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,
+    return BlocBuilder<NotesCubit, NotesState>(
+      builder: (context, state) {
+        return Form(
+          child: Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(
+                  15,
                 ),
+                color: Colors.amber,
               ),
-              subtitle: Padding(
-                padding: const EdgeInsets.only(
-                  top: 14.0,
-                ),
-                child: Text(
-                  subTitle,
-                  style: TextStyle(
-                    fontFamily: 'Poppins',
-                    color: Colors.black
-                        .withValues(alpha: .5),
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-              trailing: IntrinsicHeight(
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment:
-                      MainAxisAlignment
-                          .spaceBetween,
-                  children: [
-                    IconButton(
-                      icon: const Icon(
-                        Icons.delete,
-                        color: Colors.redAccent,
-                        size: 30,
-                      ),
-                      onPressed: () =>
-                          deleteNote(id),
-                    ),
-                    const SizedBox(height: 6),
-                    IconButton(
-                      icon: const Icon(
-                        Icons.edit_note,
-                        color: Colors.blue,
-                        size: 24,
-                      ),
-                      onPressed: () {
-                        Navigator.pushNamed(
-                          context,
-                          MyRoutes
-                              .editeNotePageRoute,
-                          arguments: selectedNote,
-                        );
-                      },
-                    ),
-                  ],
-                ),
-              ),
-              minVerticalPadding: 25,
-            ),
-            Align(
-              alignment:
-                  AlignmentGeometry.topRight,
-              child: Padding(
-                padding: const EdgeInsets.all(
-                  8.0,
-                ),
-                child: Text(
-                  formattedTime,
-                  style: Theme.of(context)
-                      .textTheme
-                      .bodySmall
-                      ?.copyWith(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  ListTile(
+                    title: Text(
+                      title,
+                      style: TextStyle(
+                        fontFamily: 'Poppins',
                         color: Colors.black,
-                        fontSize: 12,
-                        fontWeight:
-                            FontWeight.bold,
+                        fontSize: 30,
+                        fontWeight: FontWeight.bold,
                       ),
-                ),
+                    ),
+                    subtitle: Padding(
+                      padding:
+                          const EdgeInsets.only(
+                            top: 14.0,
+                          ),
+                      child: Text(
+                        subTitle,
+                        style: TextStyle(
+                          fontFamily: 'Poppins',
+                          color: Colors.black
+                              .withValues(
+                                alpha: .5,
+                              ),
+                          fontWeight:
+                              FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                    trailing: IntrinsicHeight(
+                      child: Row(
+                        mainAxisSize:
+                            MainAxisSize.min,
+                        mainAxisAlignment:
+                            MainAxisAlignment
+                                .spaceBetween,
+                        children: [
+                          IconButton(
+                            icon: const Icon(
+                              Icons.delete,
+                              color:
+                                  Colors.redAccent,
+                              size: 30,
+                            ),
+                            onPressed: () =>
+                                deleteNote(id),
+                          ),
+                          const SizedBox(height: 6),
+                          IconButton(
+                            icon: const Icon(
+                              Icons.edit_note,
+                              color: Colors.blue,
+                              size: 24,
+                            ),
+                            onPressed: () {
+                              Navigator.pushNamed(
+                                context,
+                                MyRoutes
+                                    .editeNotePageRoute,
+                                arguments:
+                                    selectedNote,
+                              );
+                            },
+                          ),
+                        ],
+                      ),
+                    ),
+                    minVerticalPadding: 25,
+                  ),
+                  Align(
+                    alignment:
+                        AlignmentGeometry.topRight,
+                    child: Padding(
+                      padding: const EdgeInsets.all(
+                        8.0,
+                      ),
+                      child: Text(
+                        formattedTime,
+                        style: Theme.of(context)
+                            .textTheme
+                            .bodySmall
+                            ?.copyWith(
+                              color: Colors.black,
+                              fontSize: 12,
+                              fontWeight:
+                                  FontWeight.bold,
+                            ),
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
-          ],
-        ),
-      ),
+          ),
+        );
+      },
     );
   }
 }
