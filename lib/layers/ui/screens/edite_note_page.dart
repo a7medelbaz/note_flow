@@ -1,17 +1,27 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../data/model/note_model.dart';
+import '../../domain/logic/cubit/read_note_cubit/notes_cubit.dart';
 import '../widgets/my_appbar.dart';
 import '../widgets/widgets_of_modal_bottom_sheet.dart';
 
 class EditeNotePage extends StatelessWidget {
-  const EditeNotePage({super.key});
+  final NoteModel selectedNote;
+
+  const EditeNotePage({
+    super.key,
+    required this.selectedNote,
+  });
 
   @override
   Widget build(BuildContext context) {
-    final TextEditingController titleController =
-        TextEditingController();
-    final TextEditingController
-    contentController = TextEditingController();
+    final titleController = TextEditingController(
+      text: selectedNote.title,
+    );
+    final contentController =
+        TextEditingController(
+          text: selectedNote.subTitle,
+        );
     return Scaffold(
       appBar: MyAppbar(
         appbarIcon: Padding(
@@ -30,7 +40,7 @@ class EditeNotePage extends StatelessWidget {
             child: IconButton(
               icon: const Icon(Icons.check),
               onPressed: () {
-                // Todo add your fuction here
+                Navigator.pop(context);
               },
             ),
           ),
@@ -47,7 +57,7 @@ class EditeNotePage extends StatelessWidget {
                   .buildTextField(
                     title: 'Title',
                     context: context,
-                    hintText: 'Write the Title',
+                    hintText: 'Edite the Title',
                     controller: titleController,
                     textColor: Colors.white,
                   ),
@@ -61,17 +71,50 @@ class EditeNotePage extends StatelessWidget {
                     title: 'Content',
                     context: context,
                     hintText:
-                        'Write the Content of the Note',
+                        'Edite the Content of the Note',
                     controller: contentController,
                     textColor: Colors.white,
                   ),
             ),
             SizedBox(height: 30),
-            WidgetsOfModalBottomSheet()
-                .buildElevatedButton(
-                  text: 'Edite Note',
-                  onPressed: () {},
-                ),
+            BlocListener<NotesCubit, NotesState>(
+              listener: (context, state) {
+                if (state is NotesSuccesss) {
+                  ScaffoldMessenger.of(
+                    context,
+                  ).showSnackBar(
+                    SnackBar(
+                      content: Text(
+                        'Note updated successfully!',
+                      ),
+                    ),
+                  );
+                }
+              },
+              child: WidgetsOfModalBottomSheet()
+                  .buildElevatedButton(
+                    text: 'Edite Note',
+                    onPressed: () {
+                      BlocProvider.of<NotesCubit>(
+                        context,
+                      ).updateNote(
+                        NoteModel(
+                          id: selectedNote.id,
+                          title: titleController
+                              .text,
+                          subTitle:
+                              contentController
+                                  .text,
+                          dateTime: selectedNote
+                              .dateTime,
+                          color:
+                              selectedNote.color,
+                        ),
+                      );
+                      Navigator.pop(context);
+                    },
+                  ),
+            ),
           ],
         ),
       ),
