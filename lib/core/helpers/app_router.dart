@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:note_flow/layers/data/model/note_model.dart';
-import '../../layers/domain/logic/cubit/read_note_cubit/notes_cubit.dart';
-
+import '../../layers/data/model/note_model.dart';
 import '../../layers/domain/logic/cubit/add_note_cubit/add_note_cubit.dart';
+import '../../layers/domain/logic/cubit/read_note_cubit/notes_cubit.dart';
 import '../../layers/ui/screens/edite_note_page.dart';
 import '../../layers/ui/screens/home_page.dart';
 import '../constants/my_strings.dart';
@@ -30,21 +29,10 @@ class AppRouter {
       case MyRoutes.editeNotePageRoute:
         final selectedNote =
             settings.arguments as NoteModel;
+
         return MaterialPageRoute(
-          builder: (_) => MultiBlocProvider(
-            providers: [
-              BlocProvider(
-                create: (context) =>
-                    NotesCubit()..fetchAllNotes(),
-              ),
-              BlocProvider(
-                create: (context) =>
-                    AddNoteCubit(),
-              ),
-            ],
-            child: EditeNotePage(
-              selectedNote: selectedNote,
-            ),
+          builder: (context) => EditeNotePage(
+            selectedNote: selectedNote,
           ),
         );
       default:
