@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:note_flow/core/constants/my_strings.dart';
-import 'package:note_flow/layers/domain/logic/cubit/add_note_cubit/add_note_cubit.dart';
-import 'package:note_flow/layers/ui/widgets/color_item.dart';
+import '../../../core/constants/my_strings.dart';
+import '../../domain/logic/cubit/add_note_cubit/add_note_cubit.dart';
+import 'color_item.dart';
 
 class BuildColorItem extends StatefulWidget {
   const BuildColorItem({super.key});

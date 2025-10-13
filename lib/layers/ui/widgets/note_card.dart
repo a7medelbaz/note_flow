@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
-import '../../domain/logic/cubit/add_note_cubit/add_note_cubit.dart';
-import '../screens/edite_note_page.dart';
+
 import '../../data/model/note_model.dart';
+import '../../domain/logic/cubit/add_note_cubit/add_note_cubit.dart';
 import '../../domain/logic/cubit/read_note_cubit/notes_cubit.dart';
+import '../screens/edite_note_page.dart';
 
 // import '../../../core/constants/my_strings.dart';
 
