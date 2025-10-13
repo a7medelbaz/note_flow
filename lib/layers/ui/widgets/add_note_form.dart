@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:note_flow/layers/ui/widgets/build_color_item.dart';
 import '../../data/model/note_model.dart';
 import '../../domain/logic/cubit/add_note_cubit/add_note_cubit.dart';
 import 'widgets_of_modal_bottom_sheet.dart';
@@ -46,7 +47,7 @@ class _AddNoteFormState
                   textColor: Colors.white,
                 ),
           ),
-          SizedBox(height: 50),
+          SizedBox(height: 20),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: WidgetsOfModalBottomSheet()
@@ -60,7 +61,15 @@ class _AddNoteFormState
                   textColor: Colors.white,
                 ),
           ),
-          SizedBox(height: 30),
+          Padding(
+            padding: const EdgeInsets.only(
+              left: 8.0,
+              right: 8,
+              bottom: 8,
+            ),
+            child:
+          BuildColorItem(),
+          ),
           WidgetsOfModalBottomSheet()
               .buildElevatedButton(
                 text: 'Add Note',

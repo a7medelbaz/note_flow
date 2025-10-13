@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
-import 'package:note_flow/layers/domain/logic/cubit/add_note_cubit/add_note_cubit.dart';
-import 'package:note_flow/layers/ui/screens/edite_note_page.dart';
+import '../../domain/logic/cubit/add_note_cubit/add_note_cubit.dart';
+import '../screens/edite_note_page.dart';
 import '../../data/model/note_model.dart';
 import '../../domain/logic/cubit/read_note_cubit/notes_cubit.dart';
 
@@ -14,6 +14,7 @@ class NoteCard extends StatelessWidget {
   final String title;
   final String subTitle;
   final DateTime time;
+  final Color color;
   const NoteCard({
     super.key,
     required this.title,
@@ -21,6 +22,7 @@ class NoteCard extends StatelessWidget {
     required this.time,
     required this.id,
     required this.selectedNote,
+    required this.color,
   });
 
   @override
@@ -44,7 +46,7 @@ class NoteCard extends StatelessWidget {
               decoration: BoxDecoration(
                 borderRadius:
                     BorderRadius.circular(15),
-                color: Colors.amber,
+                color: color,
               ),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
@@ -102,7 +104,8 @@ class NoteCard extends StatelessWidget {
                           IconButton(
                             icon: const Icon(
                               Icons.edit_note,
-                              color: Colors.blue,
+                              color: Colors
+                                  .deepPurpleAccent,
                               size: 24,
                             ),
                             onPressed: () {
