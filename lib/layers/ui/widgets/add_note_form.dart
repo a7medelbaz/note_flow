@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:note_flow/layers/ui/widgets/build_color_item.dart';
+import 'package:uuid/uuid.dart';
+
 import '../../data/model/note_model.dart';
 import '../../domain/logic/cubit/add_note_cubit/add_note_cubit.dart';
+import 'build_color_item.dart';
 import 'widgets_of_modal_bottom_sheet.dart';
-import 'package:uuid/uuid.dart';
 
 class AddNoteForm extends StatefulWidget {
   const AddNoteForm({super.key});
