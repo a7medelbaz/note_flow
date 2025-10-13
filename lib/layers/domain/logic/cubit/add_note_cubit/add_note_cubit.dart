@@ -10,8 +10,9 @@ part 'add_note_state.dart';
 
 class AddNoteCubit extends Cubit<AddNoteState> {
   AddNoteCubit() : super(AddNoteInitial());
-
+  Color noteColor = Color(0xff8ECAE6);
   addNote(NoteModel noteModel) async {
+    noteModel.color = noteColor.toARGB32();
     try {
       if (noteModel.title.trim().isEmpty ||
           noteModel.subTitle.trim().isEmpty) {
