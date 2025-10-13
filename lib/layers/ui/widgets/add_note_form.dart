@@ -61,6 +61,8 @@ class _AddNoteFormState
                 ),
           ),
           SizedBox(height: 30),
+          
+          SizedBox(height: 30),
           WidgetsOfModalBottomSheet()
               .buildElevatedButton(
                 text: 'Add Note',
