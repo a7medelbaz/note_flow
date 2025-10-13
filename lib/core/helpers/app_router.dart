@@ -29,7 +29,6 @@ class AppRouter {
       case MyRoutes.editeNotePageRoute:
         final selectedNote =
             settings.arguments as NoteModel;
-
         return MaterialPageRoute(
           builder: (context) => EditeNotePage(
             selectedNote: selectedNote,
