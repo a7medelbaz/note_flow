@@ -14,6 +14,7 @@ class NoteCard extends StatelessWidget {
   final String title;
   final String subTitle;
   final DateTime time;
+  final Color color;
   const NoteCard({
     super.key,
     required this.title,
@@ -21,6 +22,7 @@ class NoteCard extends StatelessWidget {
     required this.time,
     required this.id,
     required this.selectedNote,
+    required this.color,
   });
 
   @override
@@ -44,7 +46,7 @@ class NoteCard extends StatelessWidget {
               decoration: BoxDecoration(
                 borderRadius:
                     BorderRadius.circular(15),
-                color: Colors.amber,
+                color: color,
               ),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
@@ -102,7 +104,8 @@ class NoteCard extends StatelessWidget {
                           IconButton(
                             icon: const Icon(
                               Icons.edit_note,
-                              color: Colors.blue,
+                              color: Colors
+                                  .deepPurpleAccent,
                               size: 24,
                             ),
                             onPressed: () {
